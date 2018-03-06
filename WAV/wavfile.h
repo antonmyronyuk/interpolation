@@ -1,9 +1,18 @@
 #ifndef WAVFILE_H
 #define WAVFILE_H
 #include <QVector>
+#include <QString>
+
+
+// for different samples in wav file
+union Data{
+    qint8 data8;
+    qint16 data16;
+    qint32 data32;
+};
 
 class WavFile {
-private:
+
     struct {
         qint32 chunkId;   // Завжди містить значення 0x52494646 (літери "RIFF")
         qint32 chunkSize; // 36 + розмір другого підрозділу в байтах
@@ -25,8 +34,12 @@ private:
     struct SUBCHUNK2{
         qint32 subchunk2Id;   // 0x64617461 – літери "data"
         qint32 subchunk2Size; // == NumSamples * NumChannels * BitsPerSample/8, кількість байтів аудіоданих
-        QVector<QVector<qint16> > data;  // семпли
+        QVector<QVector<Data> > data;// семпли
     } subchunk2;
+
+public:
+    void readFromFile(QString);
+    void saveToFile(QString);
 
 };
 

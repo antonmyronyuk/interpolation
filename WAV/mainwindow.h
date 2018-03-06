@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QtMultimedia/QMediaPlayer>
 #include <QUrl>
+#include "wavfile.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,6 +27,8 @@ private:
     double speed;
     QString filename;
     QMediaPlayer* player;
+    WavFile input;
+    WavFile output;
 
 signals:
     void speedChanged(double);

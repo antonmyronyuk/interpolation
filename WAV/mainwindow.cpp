@@ -41,6 +41,9 @@ void MainWindow::openFile() {
     );
     ui->label_file->setText(filename);
     ui->playButton->setEnabled(true);
+    this->input.readFromFile(filename);
+    this->output = this->input;
+
 }
 
 void MainWindow::saveFile() {
@@ -62,4 +65,5 @@ void MainWindow::playSound() {
 void MainWindow::stopSound() {
     qDebug() << "stop";
     player->stop();
+    output.saveToFile("azazaz.wav");
 }
