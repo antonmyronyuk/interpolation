@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <iostream>
-#include <string>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -32,14 +31,15 @@ void MainWindow::openFile() {
               this,
               "Choose audiofile",
               QDir::currentPath(),
-              "WAV files (*.wav)");
-    std::cout << std::string(filename.toUtf8()) << std::endl;
+              "WAV files (*.wav)"
+    );
+    ui->label_file->setText(filename);
 }
 
 void MainWindow::saveFile() {
-    std::cout << "save" << std::endl;
+    qDebug() << "save";
 }
 
 void MainWindow::showAboutInfo() {
-    QMessageBox::information(this, "About", "Copyright © 2018 - Anton Myronyuk");
+    QMessageBox::information(this, "About", "Copyright (c) 2018 Anton Myronyuk");
 }

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Speed</string>
+     <string>Speed(x):</string>
     </property>
    </widget>
    <widget class="QSlider" name="horizontalSlider">
@@ -57,12 +57,38 @@
      <rect>
       <x>250</x>
       <y>40</y>
-      <width>47</width>
-      <height>13</height>
+      <width>41</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>140</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Selected file:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_file">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>140</y>
+      <width>261</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>None</string>
     </property>
    </widget>
   </widget>

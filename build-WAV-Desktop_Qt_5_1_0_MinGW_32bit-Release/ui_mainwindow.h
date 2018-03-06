@@ -35,6 +35,8 @@ public:
     QLabel *label;
     QSlider *horizontalSlider;
     QLabel *label_speed;
+    QLabel *label_2;
+    QLabel *label_file;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuInfo;
@@ -67,7 +69,13 @@ public:
         horizontalSlider->setOrientation(Qt::Horizontal);
         label_speed = new QLabel(centralWidget);
         label_speed->setObjectName(QStringLiteral("label_speed"));
-        label_speed->setGeometry(QRect(250, 40, 47, 13));
+        label_speed->setGeometry(QRect(250, 40, 41, 16));
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(30, 140, 71, 16));
+        label_file = new QLabel(centralWidget);
+        label_file->setObjectName(QStringLiteral("label_file"));
+        label_file->setGeometry(QRect(100, 140, 261, 16));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -103,8 +111,10 @@ public:
         actionSave->setText(QApplication::translate("MainWindow", "Save", 0));
         actionSave->setShortcut(QApplication::translate("MainWindow", "Ctrl+S", 0));
         actionAbout->setText(QApplication::translate("MainWindow", "About", 0));
-        label->setText(QApplication::translate("MainWindow", "Speed", 0));
-        label_speed->setText(QString());
+        label->setText(QApplication::translate("MainWindow", "Speed(x):", 0));
+        label_speed->setText(QApplication::translate("MainWindow", "1", 0));
+        label_2->setText(QApplication::translate("MainWindow", "Selected file:", 0));
+        label_file->setText(QApplication::translate("MainWindow", "None", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menuInfo->setTitle(QApplication::translate("MainWindow", "Info", 0));
     } // retranslateUi
