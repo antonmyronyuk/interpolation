@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QString>
+#include <QDebug>
+#include <QtMultimedia/QMediaPlayer>
+#include <QUrl>
 
 namespace Ui {
 class MainWindow;
@@ -20,6 +24,9 @@ public:
 private:
     Ui::MainWindow *ui;
     double speed;
+    QString filename;
+    QMediaPlayer* player;
+
 signals:
     void speedChanged(double);
 private slots:
@@ -27,6 +34,7 @@ private slots:
     void openFile();
     void saveFile();
     void showAboutInfo();
+    void playSound();
 
 };
 

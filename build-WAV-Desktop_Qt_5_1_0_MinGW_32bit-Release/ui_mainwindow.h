@@ -18,6 +18,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -37,6 +38,7 @@ public:
     QLabel *label_speed;
     QLabel *label_2;
     QLabel *label_file;
+    QPushButton *playButton;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuInfo;
@@ -76,6 +78,9 @@ public:
         label_file = new QLabel(centralWidget);
         label_file->setObjectName(QStringLiteral("label_file"));
         label_file->setGeometry(QRect(100, 140, 261, 16));
+        playButton = new QPushButton(centralWidget);
+        playButton->setObjectName(QStringLiteral("playButton"));
+        playButton->setGeometry(QRect(30, 180, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -115,6 +120,7 @@ public:
         label_speed->setText(QApplication::translate("MainWindow", "1", 0));
         label_2->setText(QApplication::translate("MainWindow", "Selected file:", 0));
         label_file->setText(QApplication::translate("MainWindow", "None", 0));
+        playButton->setText(QApplication::translate("MainWindow", "Play", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menuInfo->setTitle(QApplication::translate("MainWindow", "Info", 0));
     } // retranslateUi
