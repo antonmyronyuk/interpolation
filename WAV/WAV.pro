@@ -24,8 +24,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    wavfile.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    wavfile.h
 
 FORMS    += mainwindow.ui

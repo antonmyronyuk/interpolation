@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <iostream>
+#include <string>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,7 +28,12 @@ void MainWindow::setSpeed(int val) {
 }
 
 void MainWindow::openFile() {
-    std::cout << "open" << std::endl;
+    QString filename =  QFileDialog::getOpenFileName(
+              this,
+              "Choose audiofile",
+              QDir::currentPath(),
+              "WAV files (*.wav)");
+    std::cout << std::string(filename.toUtf8()) << std::endl;
 }
 
 void MainWindow::saveFile() {
