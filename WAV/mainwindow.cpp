@@ -11,12 +11,14 @@ MainWindow::MainWindow(QWidget *parent) :
     this->speed = double(ui->horizontalSlider->value()) / 100.0;
     ui->label_speed->setNum(speed);
     ui->playButton->setEnabled(false);
+
     connect(ui->horizontalSlider, SIGNAL(valueChanged(int)), this, SLOT(setSpeed(int)));
     connect(this, SIGNAL(speedChanged(double)), ui->label_speed, SLOT(setNum(double)));
     connect(ui->actionOpen, SIGNAL(triggered(bool)), this, SLOT(openFile()));
     connect(ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(saveFile()));
     connect(ui->actionAbout, SIGNAL(triggered(bool)), this, SLOT(showAboutInfo()));
     connect(ui->playButton, SIGNAL(clicked(bool)), this, SLOT(playSound()));
+    connect(ui->stopButton, SIGNAL(clicked(bool)), this, SLOT(stopSound()));
 }
 
 MainWindow::~MainWindow()
@@ -55,6 +57,9 @@ void MainWindow::playSound() {
     player->setMedia(QUrl::fromLocalFile(filename));
     player->setVolume(100);
     player->play();
+}
 
-
+void MainWindow::stopSound() {
+    qDebug() << "stop";
+    player->stop();
 }

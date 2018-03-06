@@ -35,6 +35,7 @@ private slots:
     void saveFile();
     void showAboutInfo();
     void playSound();
+    void stopSound();
 
 };
 
