@@ -67,5 +67,11 @@ void WavFile::saveToFile(QString filename) {
     }
 }
 
+//src - input, dst - output, k - coefficient
+void WavFile::resize(const WavFile &src, WavFile &dst, double k) {
+
+}
+
+
 
 

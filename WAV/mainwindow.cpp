@@ -11,6 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
     this->speed = double(ui->horizontalSlider->value()) / 100.0;
     ui->label_speed->setNum(speed);
     ui->playButton->setEnabled(false);
+    ui->stopButton->setEnabled(false);
+    ui->resizeButton->setEnabled(false);
+    ui->horizontalSlider->setEnabled(false);
 
     connect(ui->horizontalSlider, SIGNAL(valueChanged(int)), this, SLOT(setSpeed(int)));
     connect(this, SIGNAL(speedChanged(double)), ui->label_speed, SLOT(setNum(double)));
@@ -19,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAbout, SIGNAL(triggered(bool)), this, SLOT(showAboutInfo()));
     connect(ui->playButton, SIGNAL(clicked(bool)), this, SLOT(playSound()));
     connect(ui->stopButton, SIGNAL(clicked(bool)), this, SLOT(stopSound()));
+    connect(ui->resizeButton, SIGNAL(clicked(bool)), this, SLOT(resizeSound()));
 }
 
 MainWindow::~MainWindow()
@@ -41,6 +45,9 @@ void MainWindow::openFile() {
     );
     ui->label_file->setText(filename);
     ui->playButton->setEnabled(true);
+    ui->stopButton->setEnabled(true);
+    ui->resizeButton->setEnabled(true);
+    ui->horizontalSlider->setEnabled(true);
     this->input.readFromFile(filename);
     this->output = this->input;
 
@@ -65,5 +72,9 @@ void MainWindow::playSound() {
 void MainWindow::stopSound() {
     qDebug() << "stop";
     player->stop();
-    output.saveToFile("azazaz.wav");
+}
+
+void MainWindow::resizeSound() {
+    qDebug() << "resize";
+    //resize there
 }

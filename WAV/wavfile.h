@@ -40,6 +40,7 @@ class WavFile {
 public:
     void readFromFile(QString);
     void saveToFile(QString);
+    static void resize(const WavFile&, WavFile&, double);
 
 };
 

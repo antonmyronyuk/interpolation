@@ -40,6 +40,7 @@ public:
     QLabel *label_file;
     QPushButton *playButton;
     QPushButton *stopButton;
+    QPushButton *resizeButton;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuInfo;
@@ -85,6 +86,9 @@ public:
         stopButton = new QPushButton(centralWidget);
         stopButton->setObjectName(QStringLiteral("stopButton"));
         stopButton->setGeometry(QRect(120, 180, 75, 23));
+        resizeButton = new QPushButton(centralWidget);
+        resizeButton->setObjectName(QStringLiteral("resizeButton"));
+        resizeButton->setGeometry(QRect(230, 80, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -126,6 +130,7 @@ public:
         label_file->setText(QApplication::translate("MainWindow", "None", 0));
         playButton->setText(QApplication::translate("MainWindow", "Play", 0));
         stopButton->setText(QApplication::translate("MainWindow", "Stop", 0));
+        resizeButton->setText(QApplication::translate("MainWindow", "Resize", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menuInfo->setTitle(QApplication::translate("MainWindow", "Info", 0));
     } // retranslateUi

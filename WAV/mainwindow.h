@@ -39,6 +39,7 @@ private slots:
     void showAboutInfo();
     void playSound();
     void stopSound();
+    void resizeSound();
 
 };
 
