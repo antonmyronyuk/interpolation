@@ -28,6 +28,7 @@ SOURCES += main.cpp\
     wavfile.cpp
 
 HEADERS  += mainwindow.h \
-    wavfile.h
+    wavfile.h \
+    interpolation.h
 
 FORMS    += mainwindow.ui

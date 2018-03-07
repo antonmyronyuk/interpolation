@@ -2,6 +2,7 @@
 #define WAVFILE_H
 #include <QVector>
 #include <QString>
+#include "interpolation.h"
 
 
 // for different samples in wav file
