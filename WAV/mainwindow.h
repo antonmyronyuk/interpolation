@@ -10,7 +10,9 @@
 #include <QUrl>
 #include <QFile>
 #include "wavfile.h"
-
+#include <QSoundEffect>
+#include <time.h>
+#include <string>
 
 namespace Ui {
 class MainWindow;
@@ -28,8 +30,9 @@ private:
     Ui::MainWindow *ui;
     double speed;
     QString filename;
-    const char* tmpFilename;
-    QMediaPlayer* player;
+    QString tmpFilename;
+    QString tmpf;
+    QSoundEffect* player;
     WavFile input;
     WavFile output;
 

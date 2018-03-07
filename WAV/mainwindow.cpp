@@ -1,14 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <iostream>
+
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 { 
-    player = new QMediaPlayer;
+    srand(time(0));
     this->tmpFilename = "temp.wav";
     ui->setupUi(this);
+    player = new QSoundEffect;
     this->speed = double(ui->horizontalSlider->value()) / 100.0;
     ui->label_speed->setNum(speed);
     ui->playButton->setEnabled(false);
@@ -29,7 +32,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete player;
     delete ui;
 }
 
@@ -68,15 +70,30 @@ void MainWindow::showAboutInfo() {
 }
 
 void MainWindow::playSound() {
-    qDebug() << "play";
 
-    player->setMedia(QUrl::fromLocalFile(this->tmpFilename));
-    player->setVolume(100);
+    qDebug() << "play";
+    /*
+    if (player) {
+        player->~QSound();
+    }
+    player = NULL;
+    player = new QSound(this->tmpFilename);
+
     player->play();
+    */
+    player->setSource(QUrl::fromLocalFile(this->tmpFilename));
+    player->play();
+
 }
 
 void MainWindow::stopSound() {
+    /*
     qDebug() << "stop";
+    if (player) {
+        player->~QSound();
+        player = NULL;
+    }
+    */
     player->stop();
 }
 
@@ -85,6 +102,7 @@ void MainWindow::resizeSound() {
     //TODO: use normal temporary file in future
     WavFile::resize(input, output, 1.0 / speed);
     this->output.saveToFile(this->tmpFilename);
+    //this->output.saveToFile("1.wav");
     QMessageBox::information(this, "Resize", "Done! Now you can play this and save it.");
 
 }

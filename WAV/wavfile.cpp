@@ -41,11 +41,14 @@ void WavFile::readFromFile(QString filename) {
         }
     }
 
+    in.close();
+
 }
 
 void WavFile::saveToFile(QString filename) {
     //TODO: fix cyrillic characters problem
-    std::ofstream out (filename.toUtf8(), std::ios::binary);
+    std::ofstream out (filename.toUtf8(), std::ios::binary | std::ofstream::out | std::ofstream::trunc);
+
     out.write((char*) &riffheader, sizeof riffheader);
     out.write((char*) &subchunk1, sizeof subchunk1);
     out.write((char*) &subchunk2.subchunk2Id, sizeof subchunk2.subchunk2Id);
@@ -66,6 +69,7 @@ void WavFile::saveToFile(QString filename) {
             out.write((char*) &subchunk2.data[i % 2][i / 2].data32, sizeof subchunk2.data[i % 2][i / 2].data32);
         }
     }
+    out.close();
 }
 
 //src - input, dst - output, k - coefficient
