@@ -39,7 +39,7 @@ void MainWindow::setSpeed(int val) {
 }
 
 void MainWindow::openFile() {
-    this->filename =  QFileDialog::getOpenFileName(
+    this->filename = QFileDialog::getOpenFileName(
               this,
               "Choose audiofile",
               QDir::currentPath(),
@@ -61,6 +61,15 @@ void MainWindow::saveFile() {
     qDebug() << "save";
     QFile tmp(this->tmpFilename);
     tmp.remove();
+    QString resFileName = QFileDialog::getSaveFileName(
+                this,
+                "Save file",
+                QDir::currentPath(),
+                "WAV files (*.wav)"
+    );
+    output.saveToFile(resFileName);
+    qDebug() << resFileName;
+
 }
 
 void MainWindow::showAboutInfo() {
