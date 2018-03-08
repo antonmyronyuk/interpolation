@@ -11,6 +11,7 @@
 #include "wavfile.h"
 #include <time.h>
 #include <string>
+#include<QCloseEvent>
 
 namespace Ui {
 class MainWindow;
@@ -23,6 +24,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void closeEvent(QCloseEvent *event);
 
 private:
     Ui::MainWindow *ui;
@@ -42,7 +44,6 @@ private slots:
     void playSound();
     void stopSound();
     void resizeSound();
-    void test();
 
 };
 

@@ -45,22 +45,32 @@ void MainWindow::openFile() {
               QDir::currentPath(),
               "WAV files (*.wav)"
     );
-    ui->label_file->setText(filename);
-    ui->playButton->setEnabled(true);
-    ui->stopButton->setEnabled(true);
-    ui->resizeButton->setEnabled(true);
-    ui->horizontalSlider->setEnabled(true);
-    ui->actionSave->setEnabled(true);
-    this->input.readFromFile(filename);
-    this->output = this->input;
-    this->output.saveToFile(this->tmpFilename);
+
+    if (this->filename.isEmpty()) {
+        return;
+    }
+
+    try {
+        this->input.readFromFile(filename);
+        this->output = this->input;
+        this->output.saveToFile(this->tmpFilename);
+        ui->label_file->setText(filename);
+        ui->playButton->setEnabled(true);
+        ui->stopButton->setEnabled(true);
+        ui->resizeButton->setEnabled(true);
+        ui->horizontalSlider->setEnabled(true);
+        ui->actionSave->setEnabled(true);
+    }
+    catch (...) {
+        return;
+    }
+
+
 
 }
 
 void MainWindow::saveFile() {
     qDebug() << "save";
-    QFile tmp(this->tmpFilename);
-    tmp.remove();
     QString resFileName = QFileDialog::getSaveFileName(
                 this,
                 "Save file",
@@ -99,6 +109,9 @@ void MainWindow::resizeSound() {
 
 }
 
-void MainWindow::test() {
-    qDebug() << "changed";
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QFile tmp(this->tmpFilename);
+    tmp.remove();
+    event->accept();
 }
