@@ -6,11 +6,9 @@
 #include <QFileDialog>
 #include <QString>
 #include <QDebug>
-#include <QtMultimedia/QMediaPlayer>
 #include <QUrl>
 #include <QFile>
 #include "wavfile.h"
-#include <QSoundEffect>
 #include <time.h>
 #include <string>
 
@@ -31,8 +29,6 @@ private:
     double speed;
     QString filename;
     QString tmpFilename;
-    QString tmpf;
-    QSoundEffect* player;
     WavFile input;
     WavFile output;
 
@@ -46,6 +42,7 @@ private slots:
     void playSound();
     void stopSound();
     void resizeSound();
+    void test();
 
 };
 
