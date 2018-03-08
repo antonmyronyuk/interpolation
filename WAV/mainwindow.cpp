@@ -71,6 +71,8 @@ void MainWindow::openFile() {
 
 void MainWindow::saveFile() {
     qDebug() << "save";
+    QFile tmp(this->tmpFilename);
+    tmp.remove();
     QString resFileName = QFileDialog::getSaveFileName(
                 this,
                 "Save file",
@@ -79,6 +81,7 @@ void MainWindow::saveFile() {
     );
     output.saveToFile(resFileName);
     qDebug() << resFileName;
+    QFile::copy(resFileName, this->tmpFilename);
 
 }
 
