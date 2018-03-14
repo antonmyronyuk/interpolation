@@ -1,2 +1,3 @@
 # interpolation
-algorithms lab
+WAV file interpolation 
+simple QT UI
